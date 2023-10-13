@@ -12,7 +12,8 @@ export class Article {
   @Prop({ required: false })
   content: string;
 
- 
+  @Prop({ type: Types.ObjectId, ref: 'Category' }) // Define a reference to the Category entity
+  category: Category;
 
   @Prop({ default: Date.now, required: false  })
   CreatedAt: Date;
