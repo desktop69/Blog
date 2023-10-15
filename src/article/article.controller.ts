@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { ArticleService } from './article.service';
 import { Article } from './entities/Ariticle.entity';
 import { CreateArticleDto } from './dto/create-article.dto';
@@ -25,6 +25,10 @@ export class ArticleController {
   @Put(':id')
   update(@Param('id') id: string, @Body() articleData: UpdateArticleDto): Promise<Article> {
     return this.articleService.update(id, articleData);
+  }
+  @Delete(':id')
+  async deleteArticle(@Param('id') articleId: string): Promise<Article> {
+    return this.articleService.remove(articleId);
   }
   @Get('by-category/:categoryId')
   async findArticlesByCategory(@Param('categoryId') categoryId: string): Promise<Article[]> {

@@ -27,7 +27,7 @@ export class ArticleService {
     return this.articlerepo.findByIdAndUpdate(id, Data, { new: true });
   }
   async findArticlesByCategory(categoryId: string): Promise<Article[]> {
-    return this.articlerepo.find({ 'category': categoryId });
+    return this.articlerepo.find({ 'category._id': categoryId });
   }
 
 }
